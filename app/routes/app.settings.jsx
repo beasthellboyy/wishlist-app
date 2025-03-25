@@ -11,14 +11,41 @@ import {
   Divider,
   TextField,
   useBreakpoints,
+  Button,
 
 } from "@shopify/polaris";
 import { TitleBar } from "@shopify/app-bridge-react";
 import { useState } from "react";
+import { json } from "@remix-run/node";
+import { useLoaderData, Form } from "@remix-run/react";
+
+export async function loader() {
+  // provides data to the component
+  // get data from database
+
+  let settings = {
+    name: "Puzzle Solved",
+    description: "A puzzle app",
+    }
+
+    return json(settings);
+  }
+
+
+export async function action({ request }) {
+  // handles form submission
+  let settings = await request.formData();
+  settings = Object.fromEntries(settings);
+  // updates persistent data
+  return json(settings);
+}
+
 
 export default function SettingsPage() {
 
-  const [formState, setFormState] = useState({});
+  const settings = useLoaderData();
+
+  const [formState, setFormState] = useState(settings);
 
   const { smUp } = useBreakpoints();
   return (
@@ -75,10 +102,14 @@ export default function SettingsPage() {
             </BlockStack>
           </Box>
           <Card roundedAbove="sm">
+            <Form method="POST">
             <BlockStack gap="400">
-              <TextField label="App name" />
-              <TextField label="App description" />
+              <TextField label="App name" name = "name" value = {formState.name} onChange={(value) => setFormState({...formState, name: value})} />
+              <TextField label="App description" name = "description" value = {formState.description} onChange={(value) => setFormState({...formState, description: value})} />
+            
+              <Button variant="primary" submit={true}>Save theme</Button> 
             </BlockStack>
+            </Form>
           </Card>
         </InlineGrid>
       </BlockStack>
