@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "10992a5f0823ee83b7e65ed4d30f8fee"
-application_url = "https://rentals-frequent-symposium-background.trycloudflare.com"
+application_url = "https://qualities-bs-turn-eds.trycloudflare.com"
 embedded = true
 name = "wishlist-app"
 handle = "wishlist-app-325"
@@ -27,9 +27,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://rentals-frequent-symposium-background.trycloudflare.com/auth/callback",
-  "https://rentals-frequent-symposium-background.trycloudflare.com/auth/shopify/callback",
-  "https://rentals-frequent-symposium-background.trycloudflare.com/api/auth/callback"
+  "https://qualities-bs-turn-eds.trycloudflare.com/auth/callback",
+  "https://qualities-bs-turn-eds.trycloudflare.com/auth/shopify/callback",
+  "https://qualities-bs-turn-eds.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]
